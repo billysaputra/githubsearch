@@ -12,10 +12,14 @@ import retrofit2.Response
 
 class MainViewModel : ViewModel() {
     private var searchResponse = MutableLiveData<SearchResponse>()
+    var errorMessage = MutableLiveData<String>()
 
     companion object {
         const val PER_PAGE = 10
         const val INITIAL_PAGE = 1
+        const val VISIBLE_THRESHOLD = 2
+        const val NO_CONNECTION = "NO_CONNECTION"
+        const val API_FAILURE = "API_FAILURE"
     }
 
     internal fun setSearch(userName : String, currentPage: Int){
@@ -28,11 +32,11 @@ class MainViewModel : ViewModel() {
             }
 
             override fun onFailedResponse(call: Call<*>, message: String) {
-
+                errorMessage.postValue(API_FAILURE)
             }
 
             override fun onFailure(call: Call<*>) {
-
+                errorMessage.postValue(NO_CONNECTION)
             }
         })
     }
