@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), MainViewContract.View {
         val searchItem = menu?.findItem(R.id.action_search)
         searchView = searchItem?.actionView as SearchView
         searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
-        searchView.queryHint = getString(R.string.search_by_user)
+        searchView.queryHint = getString(R.string.search_by_user_name)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 hideKeyboard()
@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity(), MainViewContract.View {
     override fun switchEmptyLayout(isVisible : Boolean, message: String) {
         rv_user_list.visibility = if(isVisible) View.GONE else View.VISIBLE
         iv_failed.visibility =  if(isVisible) View.VISIBLE else View.GONE
+        iv_failed.setImageResource(R.drawable.ic_not_found)
         tv_empty_message.visibility =  if(isVisible) View.VISIBLE else View.GONE
         tv_empty_message.text = message
     }

@@ -59,7 +59,7 @@ class GithubUserListAdapter(var userList: List<User>) :
         fun setView(user: User) {
             with(itemView) {
                 Glide.with(iv_user_avatar.context).load(user.avatarUrl)
-                    .apply(Utils.glideRequestOptions(R.drawable.ic_not_found))
+                    .apply(Utils.glideRequestOptions(R.drawable.ic_git))
                     .into(iv_user_avatar)
                 tv_user_name.text = user.login
             }

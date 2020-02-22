@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Github Search</string>
-    <string name="search_by_user">Search by user</string>
+    <string name="search_by_user_name">User name ex: billysaputra</string>
     <string name="failed_to_fetch_data">Failed to fetch data</string>
     <string name="search_by_github_user_name">Search by Github user name</string>
     <string name="username_not_found">Username not found</string>

@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/iv_failed"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:contentDescription="@string/failed_to_fetch_data"
-        android:src="@drawable/ic_not_found"
+        android:src="@drawable/ic_git"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
