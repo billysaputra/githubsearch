@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity(), MainViewContract.View {
         searchView.queryHint = getString(R.string.search_by_user_name)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                hideKeyboard()
                 userName = query
                 mainViewPresenter.searchRequestByUserName(userName, INITIAL_PAGE)
+                hideKeyboard()
                 return true
             }
 

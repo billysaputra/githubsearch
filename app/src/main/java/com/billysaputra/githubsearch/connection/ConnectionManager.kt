@@ -2,6 +2,9 @@ package com.billysaputra.githubsearch.connection
 
 import android.util.Log
 import com.billysaputra.githubsearch.helper.enqueue
+import com.billysaputra.githubsearch.model.ErrorResponse
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import retrofit2.Call
 import retrofit2.Response
 
@@ -24,8 +27,10 @@ class ConnectionManager {
                     mConnectionCallback.onSuccessResponse(call, response)
                 } else {
                     Log.i(TAG, "onFailed, URL : ${call.request().url()}")
-                    println("Response : ${response.errorBody()}")
-                    mConnectionCallback.onFailedResponse(call, response.message())
+                    val gson = Gson()
+                    val type = object : TypeToken<ErrorResponse>() {}.type
+                    val errorResponse: ErrorResponse? = gson.fromJson(response.errorBody()!!.charStream(), type)
+                    mConnectionCallback.onFailedResponse(call, errorResponse?.message ?: "Server Error")
                 }
 
             }
